@@ -47,7 +47,7 @@
 
     
     Public Directory important File:
-    Manifest.JSON() FIle:  Provides metadata about the application to improve the user experience when the app is locally by the users for their usage.
+    Manifest.JSON() FIle:  purpose of the manifest is to install web applications to the homescreen of a device, providing users with quicker access and a richer experience.
     robots.txt File: Used by webmasters to provide instructions to search engine crawlers about which pages or sections of their website should be crawled and indexed by the search engine. Used for SEO purpose. 
     
    
