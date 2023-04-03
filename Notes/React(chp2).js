@@ -134,6 +134,13 @@
          1. When react renders a component on to a page that is called as Mounting.Happens only once in a lifecycle. 
          2. Used to make API requests.
          3. SNIPPET:
+              componentDidMount(){
+                fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response=>response.json())
+                .then((users)=>{
+                  this.setState({'monsters':users});
+                })
+              }
 
 
       Flow of control in react.
