@@ -55,8 +55,7 @@
     Simplest way ro understand React:  
       * It is a Function returning HTML.
       * Makes use of JSX(Javascript Syntax Extension) to do so.
-      *  
-
+      
 
 */
 
