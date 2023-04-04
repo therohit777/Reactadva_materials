@@ -150,6 +150,33 @@
           4. As soon as the state changes the component rerenders itself.
                   
       
+      Filter() in react:
+         USed to filter the array of elements and create a new array.
+         SNIPPET:
+            <div className="App">
+              <input
+                type="text"
+                placeholder="search monsters"
+                onChange={(event) => { //Here OnChange returns the value wriiten inside the input box by event.target.value.
+                  console.log(event.target.value.toLowerCase()); //toLowerCase() changes all characters of a string to lowercase.
+                  const filtermonster = this.state.monsters.filter((monsterelement)=>{ // Filter Takes an array and filters out the elemnts based on the return condition to create a new array. 
+                    return monsterelement.name.toLowerCase().includes(event.target.value); // includes function here checks whether the given string/character is a substring of string on which we have applied our include().
+                  })
+                  console.log(filtermonster)
+                  this.setState(()=>{
+                    return {monsters:filtermonster};
+                  })
+                }}
+                //Note: Whenever we need to update an array we need to update the entire array else the changes won't get rendered on our page.
+              />
+              {this.state.monsters.map((element) => {
+                return (
+                  <div key={element.id}>
+                    <h1>{element.name}</h1>
+                  </div>
+                );
+              })}
+          </div>
 
 
 
