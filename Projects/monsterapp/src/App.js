@@ -1,5 +1,6 @@
 import "./App.css";
 import { Component } from "react";
+import CardList from "./components/cards-list/CardList.components";
 
 class App extends Component {
   constructor() {
@@ -17,29 +18,29 @@ class App extends Component {
         this.setState({ monsters: users });
       });
   }
+
+
+  onSearchChange=(event) => { 
+       this.setState(()=>{
+      return {search_monsters:event.target.value.toLowerCase()};
+    })
+  }
+
   render() {
-    const filtermonster = this.state.monsters.filter((monsterelement)=>{ // Filter Takes an array and filters out the elemnts based on the return condition to create a new array. 
-      return monsterelement.name.toLowerCase().includes(this.state.search_monsters); // includes function here checks whether the given string/character is a substring of string on which we have applied our include().
+    const {monsters,search_monsters} = this.state;
+    const {onSearchChange} = this;
+    const filtermonster = monsters.filter((monsterelement)=>{ 
+      return monsterelement.name.toLowerCase().includes(search_monsters); 
     })
     return (
       <div className="App">
         <input
           type="text"
           placeholder="search monsters"
-          onChange={(event) => { //Here OnChange returns the value wriiten inside the input box by event.target.value.
-            this.setState(()=>{
-              return {search_monsters:event.target.value.toLowerCase()};
-            })
-          }}
-          //Note: Whenever we need to update an array we need to update the entire array else the changes won't get rendered on our page.
+          onChange={(event)=>{onSearchChange(event)}}
         />
-        {filtermonster.map((element) => {
-          return (
-            <div key={element.id}>
-              <h1>{element.name}</h1>
-            </div>
-          );
-        })}
+        <CardList monsters={filtermonster}/> 
+        {/* monster here is passed to the component as a Prop. Props is an object of properties/values passed from parent component to the child component.  */}
       </div>
     );
   }
