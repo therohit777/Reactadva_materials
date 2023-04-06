@@ -1,6 +1,15 @@
 import "./App.css";
 import { Component } from "react";
 import CardList from "./components/cards-list/CardList.components";
+import Searchbox from "./components/seach-filter/searchbox.component";
+
+const Text = ()=>{
+  return(
+    <h1 className="app-title">Monsters Rolodex</h1> 
+  )
+}
+
+
 
 class App extends Component {
   constructor() {
@@ -33,14 +42,10 @@ class App extends Component {
       return monsterelement.name.toLowerCase().includes(search_monsters); 
     })
     return (
-      <div className="App">
-        <input
-          type="text"
-          placeholder="search monsters"
-          onChange={(event)=>{onSearchChange(event)}}
-        />
+      <div className="App"> 
+        <Text/>
+        <Searchbox onChangeHandler={onSearchChange} placeholder={"Search monster"} className={"Monters1"}/>      
         <CardList monsters={filtermonster}/> 
-        {/* monster here is passed to the component as a Prop. Props is an object of properties/values passed from parent component to the child component.  */}
       </div>
     );
   }
